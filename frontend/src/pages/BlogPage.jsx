@@ -1,28 +1,14 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Footer from '../components/home/Footer'
 import Navbar from '../components/home/Navbar'
 import SectionWrapper from '../components/home/SectionWrapper'
 import { applySeo, SITE_URL } from '../lib/seo'
-
-const posts = [
-  {
-    title: 'Old vs New Tax Regime: Which One Saves More?',
-    excerpt: 'A practical comparison using real salary ranges and deduction scenarios.',
-    tag: 'Tax',
-  },
-  {
-    title: 'How to Estimate In-Hand Salary From CTC',
-    excerpt: 'Understand PF, income tax, cess, and employer components in simple terms.',
-    tag: 'Salary',
-  },
-  {
-    title: 'Salary Negotiation Math: What Actually Matters',
-    excerpt: 'Use effective monthly take-home numbers instead of headline CTC alone.',
-    tag: 'Career',
-  },
-]
+import { getAllBlogPosts } from '../lib/blogPosts'
 
 function BlogPage() {
+  const posts = getAllBlogPosts()
+
   useEffect(() => {
     applySeo({
       title: 'Blog',
@@ -57,16 +43,17 @@ function BlogPage() {
       <SectionWrapper className="pt-2">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <article
-              key={post.title}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            <Link
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="inline-flex rounded-full bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700">
-                {post.tag}
+                {post.category}
               </span>
               <h2 className="mt-3 text-lg font-semibold text-slate-900">{post.title}</h2>
               <p className="mt-2 text-sm text-slate-600">{post.excerpt}</p>
-            </article>
+            </Link>
           ))}
         </div>
       </SectionWrapper>
