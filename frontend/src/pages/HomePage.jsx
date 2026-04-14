@@ -6,6 +6,7 @@ import Navbar from '../components/home/Navbar'
 import SectionWrapper from '../components/home/SectionWrapper'
 import ToolCard from '../components/home/ToolCard'
 import { applySeo, SITE_URL } from '../lib/seo'
+import { getAllTools } from '../lib/tools'
 
 function InlineIcon({ type }) {
   const common = 'h-4 w-4 text-blue-700'
@@ -30,29 +31,13 @@ function InlineIcon({ type }) {
   return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 1v22M1 12h22" /></svg>
 }
 
-const featuredTools = [
-  {
-    title: 'Salary Calculator',
-    desc: 'Get monthly in-hand salary from annual CTC with tax regime comparison.',
-    cta: 'Open Tool',
-    href: '/tools/salary-calculator',
-    status: 'Live',
-  },
-  {
-    title: 'Tax Planner',
-    desc: 'Estimate annual tax outflow and optimize deductions before filing.',
-    cta: 'Coming soon',
-    href: '#',
-    status: 'Coming soon',
-  },
-  {
-    title: 'PF Calculator',
-    desc: 'Break down employee contribution, employer contribution, and yearly totals.',
-    cta: 'Coming soon',
-    href: '#',
-    status: 'Coming soon',
-  },
-]
+const featuredTools = getAllTools().map((tool) => ({
+  title: tool.name,
+  description: `Use ${tool.name.toLowerCase()} with instant API-powered output.`,
+  cta: 'Open Tool',
+  href: `/tools/${tool.slug}`,
+  status: 'Live',
+}))
 
 function HomePage() {
   useEffect(() => {
@@ -102,8 +87,8 @@ function HomePage() {
       </SectionWrapper>
 
       <SectionWrapper
-        title="Featured Tools"
-        subtitle="Start with our most-used finance calculators."
+        title="All Tools"
+        subtitle="30 live calculators built on one reusable platform."
         className="bg-white pt-6"
       >
         <div id="tools" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

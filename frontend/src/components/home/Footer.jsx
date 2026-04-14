@@ -17,9 +17,13 @@ function Footer() {
         <div>
           <p className="font-semibold text-white">Tools</p>
           <ul className="mt-3 space-y-2 text-sm">
+            <li><Link to="/tools" className="transition hover:text-white">All Tools</Link></li>
             <li><Link to="/tools/salary-calculator" className="transition hover:text-white">Salary Calculator</Link></li>
-            <li><a href="/#tools" className="transition hover:text-white">EMI Calculator</a></li>
-            <li><a href="/#tools" className="transition hover:text-white">Tax Planner</a></li>
+            <li><Link to="/tools/home-loan-emi-calculator" className="transition hover:text-white">EMI Calculator</Link></li>
+            <li><Link to="/tools/income-tax-calculator-india" className="transition hover:text-white">Tax Calculator</Link></li>
+            <li><Link to="/tools/sip-calculator" className="transition hover:text-white">SIP Calculator</Link></li>
+            <li><Link to="/tools/gst-calculator-india" className="transition hover:text-white">GST Calculator</Link></li>
+            <li><Link to="/tools/profit-margin-calculator" className="transition hover:text-white">Profit Margin Calculator</Link></li>
           </ul>
         </div>
         <div>

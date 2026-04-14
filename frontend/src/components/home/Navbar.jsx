@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 
 const navItems = [
   { label: 'Home', href: '/', isHash: false },
-  { label: 'Tools', href: '/#tools', isHash: true },
-  { label: 'Salary Calculator', href: '/tools/salary-calculator', isHash: false },
-  { label: 'EMI Calculator', href: '/#tools', isHash: true },
+  { label: 'Tools', href: '/tools', isHash: false },
   { label: 'Blog', href: '/blog', isHash: false },
 ]
 
