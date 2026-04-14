@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent rewrite loops once request is in /public
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Serve existing files/directories from the /public folder
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -d
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Send all other requests to Laravel front controller
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>
